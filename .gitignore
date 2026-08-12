@@ -1,0 +1,23 @@
+# 操作系统生成文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# 编辑器/IDE 缓存
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.log
+*.tmp
+*.bak
+
+# Node 相关（如后续需要）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mjl · 物联网作品集</title>
+    <style>
+        /* ----- 全局重置 & 基础 ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f7faff;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 880px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 12px 32px rgba(0, 40, 80, 0.08);
+            padding: 2.8rem 2.8rem 2.8rem 2.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        /* ----- 顶部：姓名 + 简介 ----- */
+        .header {
+            margin-bottom: 2.6rem;
+            border-bottom: 3px solid #e6f0ff;
+            padding-bottom: 1.8rem;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b2b4a;
+            margin-bottom: 0.25rem;
+        }
+
+        .header h1 span {
+            color: #3b82f6;
+        }
+
+        .header .tagline {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #3b5b7a;
+            background: #f0f6ff;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            margin-top: 0.15rem;
+        }
+
+        /* ----- 区块标题 ----- */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 550;
+            color: #0b2b4a;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #d6e8ff, transparent);
+        }
+
+        /* ----- 技能列表 ----- */
+        .skills {
+            margin-bottom: 2.8rem;
+        }
+
+        .skill-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .skill-item {
+            background: #f8fcff;
+            border-left: 5px solid #8bbaff;
+            padding: 0.8rem 1.4rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #1f3a57;
+            box-shadow: 0 1px 3px rgba(0, 60, 120, 0.04);
+            transition: background 0.15s;
+        }
+
+        .skill-item strong {
+            font-weight: 600;
+            color: #1a4a7a;
+        }
+
+        .skill-item .desc {
+            color: #4a6a8a;
+            margin-left: 0.3rem;
+        }
+
+        /* ----- 作品展示 (卡片) ----- */
+        .projects {
+            margin-bottom: 2.8rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #fafdff;
+            border-radius: 18px;
+            padding: 1.5rem 1.3rem 1.5rem 1.3rem;
+            box-shadow: 0 2px 8px rgba(0, 50, 100, 0.04);
+            border: 1px solid #e9f0fa;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: #b8d4ff;
+            box-shadow: 0 6px 16px rgba(50, 120, 220, 0.06);
+        }
+
+        .project-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #0f2f4f;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .project-card .project-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #3b82f6;
+            background: #e5f0ff;
+            display: inline-block;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #3d5d7d;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .meta {
+            font-size: 0.85rem;
+            color: #6c8aaa;
+            border-top: 1px dashed #dfeaf5;
+            padding-top: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
+        /* ----- 联系方式 ----- */
+        .contact {
+            margin-top: 0.2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.2rem 2.2rem;
+            background: #f6fbff;
+            padding: 1.2rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid #e0edfe;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: #1e3d5e;
+        }
+
+        .contact-item .label {
+            font-weight: 450;
+            color: #537a9e;
+        }
+
+        .contact-item .value {
+            font-weight: 500;
+            color: #0b2b4a;
+            word-break: break-all;
+        }
+
+        .contact-item .value a {
+            color: #0b2b4a;
+            text-decoration: none;
+            border-bottom: 1px dotted #b0ccf0;
+            transition: border-color 0.2s;
+        }
+
+        .contact-item .value a:hover {
+            border-bottom-color: #3b82f6;
+        }
+
+        /* ----- 小屏适配 ----- */
+        @media (max-width: 550px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .container {
+                padding: 1.6rem 1.2rem;
+                border-radius: 20px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .header .tagline {
+                font-size: 1rem;
+                padding: 0.1rem 1rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                border-radius: 28px;
+                padding: 1.2rem 1.4rem;
+                gap: 0.6rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .skill-item {
+                padding: 0.6rem 1rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .container {
+                padding: 1rem 0.8rem;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 顶部：姓名 + 一句话简介 -->
+        <header class="header">
+            <h1>mjl <span>·</span> 物联网</h1>
+            <div class="tagline">感知 · 连接 · 智能</div>
+        </header>
+
+        <!-- 技能列表 -->
+        <section class="skills">
+            <h2 class="section-title">技能</h2>
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <strong>嵌入式系统</strong><span class="desc">— 基于 ESP32 / STM32 的传感与执行器开发</span>
+                </div>
+                <div class="skill-item">
+                    <strong>无线通信</strong><span class="desc">— LoRa、ZigBee、BLE、Wi-Fi 组网与协议调试</span>
+                </div>
+                <div class="skill-item">
+                    <strong>云平台与数据</strong><span class="desc">— MQTT / HTTP 对接，Node-RED 与 阿里云 IoT 实战</span>
+                </div>
+                <div class="skill-item">
+                    <strong>前端与可视化</strong><span class="desc">— 构建轻量仪表板，WebSocket 实时数据展示</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品展示 -->
+        <section class="projects">
+            <h2 class="section-title">作品</h2>
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <div class="project-tag">智能农业</div>
+                    <h3>温室环境监测</h3>
+                    <p>基于 ESP8266 与 LoRa 的温湿度、光照采集系统，搭配云端报警。</p>
+                    <div class="meta">STM32 · LoRa · MQTT</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">工业传感</div>
+                    <h3>振动分析节点</h3>
+                    <p>使用 ADXL345 与 ESP32 实现设备振动数据采集，并通过 BLE 传输。</p>
+                    <div class="meta">ESP32 · BLE · 数据滤波</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">智能家居</div>
+                    <h3>多协议网关</h3>
+                    <p>ZigBee 与 Wi-Fi 桥接网关，支持本地规则引擎与远程控制。</p>
+                    <div class="meta">ZigBee · Wi-Fi · Node-RED</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="contact">
+            <h2 class="section-title">联系方式</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="label">📧 邮箱</span>
+                    <span class="value"><a href="mailto:2433832359@qq.com">2433832359@qq.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">📱 电话</span>
+                    <span class="value">+86 2433832359</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">🌐 领域</span>
+                    <span class="value">物联网 · 嵌入式</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
