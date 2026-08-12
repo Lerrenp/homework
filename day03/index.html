@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="mjl 的物联网作品集 - 嵌入式 / 无线通信 / 物联网解决方案" />
+    <meta name="color-scheme" content="light dark" />
+    <title>mjl · 物联网作品集</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2300658f' d='M12 2 4 7v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V7l-8-5z'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+    <!-- 鸟群动画画布（固定全屏背景） -->
+    <canvas id="flock-canvas" aria-hidden="true"></canvas>
+
+    <!-- 工具栏：主题切换 -->
+    <div class="toolbar" role="toolbar" aria-label="页面工具">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="切换主题"></button>
+    </div>
+
+    <main class="container">
+
+        <!-- 顶部：姓名 + 一句话简介 -->
+        <header class="header">
+            <h1>mjl <span class="accent">·</span> 物联网</h1>
+            <div class="tagline">感知 · 连接 · 智能</div>
+            <div class="bird-hud" title="当前鸟群数量">
+                <span id="bird-count">—</span> birds
+            </div>
+        </header>
+
+        <!-- 技能列表 -->
+        <section class="skills" aria-labelledby="skills-title">
+            <h2 class="section-title" id="skills-title">技能</h2>
+            <div class="skill-grid">
+
+                <div class="skill-item">
+                    <span class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M9 2v6.5L3 17a2 2 0 0 0 1.7 3h14.6A2 2 0 0 0 21 17l-6-8.5V2h-2v6h-2V2H9zm-2 16a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm10 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"/></svg>
+                    </span>
+                    <strong>嵌入式系统</strong>
+                    <span class="desc">— 基于 ESP32 / STM32 的传感与执行器开发</span>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9zm0 2a7 7 0 0 0-7 7 7 7 0 0 0 7 7 7 7 0 0 0 7-7 7 7 0 0 0-7-7zm-1 3h2v3.6l2.7 1.6-1 1.7L11 9.7V8z"/></svg>
+                    </span>
+                    <strong>无线通信</strong>
+                    <span class="desc">— LoRa、ZigBee、BLE、Wi-Fi 组网与协议调试</span>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2 4 7v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V7l-8-5zm0 2.2 6 3.7V13c0 4-2.5 7.5-6 9-3.5-1.5-6-5-6-9V7.9l6-3.7zM12 8a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </span>
+                    <strong>云平台与数据</strong>
+                    <span class="desc">— MQTT / HTTP 对接，Node-RED 与 阿里云 IoT 实战</span>
+                </div>
+
+                <div class="skill-item">
+                    <span class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M3 4h18v4H3V4zm0 6h18v4H3v-4zm0 6h18v4H3v-4z"/></svg>
+                    </span>
+                    <strong>前端与可视化</strong>
+                    <span class="desc">— 构建轻量仪表板，WebSocket 实时数据展示</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 作品展示（由 JS 从 GitHub API 动态填充） -->
+        <section class="projects" aria-labelledby="projects-title">
+            <h2 class="section-title" id="projects-title">作品</h2>
+            <div id="repo-status" class="repo-status">
+                <span class="dot"></span>
+                <span>正在从 GitHub 加载项目...</span>
+            </div>
+            <div id="project-grid" class="project-grid">
+                <!-- 由 JS 注入 -->
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="contact" aria-labelledby="contact-title">
+            <h2 class="section-title" id="contact-title">联系方式</h2>
+            <div class="contact-info">
+
+                <div class="contact-item">
+                    <span class="icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 4 8 5 8-5V6l-8 5-8-5v2z"/></svg>
+                    </span>
+                    <div>
+                        <div class="label">邮箱</div>
+                        <div class="value"><a href="mailto:2433832359@qq.com">2433832359@qq.com</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1l-2.22 2.2z"/></svg>
+                    </span>
+                    <div>
+                        <div class="label">电话</div>
+                        <div class="value">+86 2433832359</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 5h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
+                    </span>
+                    <div>
+                        <div class="label">领域</div>
+                        <div class="value">物联网 · 嵌入式</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span>© <span id="year">2026</span> mjl · Built with Material You</span>
+            <span><a href="https://github.com/Lerrenp" target="_blank" rel="noopener noreferrer" style="color:inherit;border-bottom:1px dotted var(--md-sys-color-outline);text-decoration:none;">github.com/Lerrenp</a></span>
+        </footer>
+
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 年份自动更新（轻量内联，避免污染主脚本）
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
