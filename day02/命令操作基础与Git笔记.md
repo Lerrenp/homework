@@ -12,7 +12,7 @@
 
 命令行界面（Command Line Interface，**CLI**）是通过文本指令与计算机交互的方式。与图形界面（GUI）相比，它**更高效、可脚本化、占用资源少**，是开发者必备技能。
 
-![命令行界面示意图](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=A%20sleek%20modern%20terminal%20command%20line%20interface%20window%20with%20glowing%20green%20code%20text%20on%20dark%20background%2C%20minimal%20clean%20tech%20illustration%2C%20developer%20workspace&image_size=landscape_16_9)
+![命令行界面示意图](images/cli-terminal.png)
 
 *图 1-1 现代终端命令行界面*
 
@@ -31,7 +31,7 @@
 - **绝对路径**：从根目录开始的完整路径，例如 `D:\Trae\project\homework`
 - **相对路径**：相对于当前工作目录的路径，例如 `./day01` 或 `../homework`
 
-![文件系统目录树示意图](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Computer%20file%20system%20directory%20tree%20structure%20concept%20illustration%2C%20folder%20hierarchy%2C%20clean%20minimal%20tech%20diagram&image_size=landscape_16_9)
+![文件系统目录树示意图](images/fs-tree.png)
 
 *图 1-2 目录树结构*
 
@@ -100,7 +100,7 @@ Git 是一个**分布式版本控制系统**，用于追踪文件变化、协同
 - **分支轻量**：分支创建/切换/合并非常快
 - **数据完整**：使用 SHA-1 哈希校验，保证内容不可篡改
 
-![Git 工作流示意图](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Git%20distributed%20version%20control%20workflow%20diagram%20showing%20branches%20commits%20and%20merging%2C%20blue%20orange%20tech%20illustration%2C%20clean%20modern%20infographic%20style&image_size=landscape_16_9)
+![Git 工作流示意图](images/git-workflow.png)
 
 *图 2-1 Git 分布式工作流*
 
